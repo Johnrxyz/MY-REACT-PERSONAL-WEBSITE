@@ -7,6 +7,7 @@ function BookBrowser() {
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(0);
     const [order, setOrder] = useState('asc');
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const maxResults = 12;
 
     useEffect(() => {
@@ -28,12 +29,24 @@ function BookBrowser() {
             });
     }, [search, page, order]);
 
+    useEffect(()=> {
+        if (isDarkMode) {
+            document.body.classList.remove('dark-mode')
+        } else {
+            document.body.classList.add('dark-mode')
+        }
+    }, [isDarkMode])
+
     function handleUpload () {
         return
     }
 
     function setFile () {
         return
+    }
+
+    function handleCheckboxChange (event) {
+        setIsDarkMode(event.target.checked)
     }
 
     return (
@@ -48,7 +61,14 @@ function BookBrowser() {
                     setPage(0);
                 }}
             /> 
-            <div style={{textAlign: 'right',margin: '1rem 0'}}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1rem 0' }}>
+                <label className="switch" id="dark">
+                            <input type="checkbox"
+                                checked={isDarkMode} 
+                                onChange={handleCheckboxChange} />
+                            <span className="slider round"></span>
+                        </label>
+
                 <button style={{fontWeight:'bold', borderRadius:'10px', padding:'5px'}} onClick={() => setOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}>
                     Sort by Title: {order === 'asc' ? 'A–Z' : 'Z–A'}
                 </button>

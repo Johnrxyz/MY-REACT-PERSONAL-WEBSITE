@@ -1,10 +1,21 @@
+:root {
+    --text-color-light: black;
+    --text-color-dark: white;
+  
+    --background-color-light: rgba(255, 255, 255, 0.288);
+    --background-color-dark: black;
+  }
+
+  
 body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0d0d0d;
-    color: #ffffff;
 }
+body.dark-mode {
+    color: var(--text-color-dark); 
+    background-color: var(--background-color-dark); 
+  }
 
 .book-browser {
     max-width: 1000px;
@@ -22,10 +33,8 @@ body {
 .book-browser input {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #1a1a1a;
     border: 1px solid #333;
     border-radius: 8px;
-    color: white;
     font-size: 1rem;
     margin-bottom: 2rem;
     outline: none;
@@ -43,7 +52,6 @@ body {
 }
 
 .book-card {
-    background-color: #1a1a1a;
     border: 1px solid #333;
     border-radius: 12px;
     padding: 1rem;
@@ -71,7 +79,6 @@ body {
 
 .book-card p {
     font-size: 0.875rem;
-    color: #bbb;
 }
 
 .pagination {
@@ -82,8 +89,6 @@ body {
 }
 
 .pagination button {
-    background-color: white;
-    color: black;
     padding: 0.6rem 1.2rem;
     border: none;
     border-radius: 6px;
@@ -92,11 +97,59 @@ body {
 }
 
 .pagination button:disabled {
-    background-color: #444;
-    color: #aaa;
     cursor: not-allowed;
 }
 
 .pagination button:hover:not(:disabled) {
     background-color: #e5e5e5;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: auto;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #424242;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
