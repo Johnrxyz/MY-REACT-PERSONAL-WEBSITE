@@ -48,21 +48,10 @@ function BookBrowser() {
                     setPage(0);
                 }}
             /> 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1rem 0' }}>
-                <div>
-                    <input
-                        type="file"
-                        onChange={e => setFile(e.target.files[0])}
-                        style={{ marginRight: '0.5rem' }}
-                    />
-                    <button onClick={handleUpload}>Upload File</button>
-                </div>
-
-                <div style={{margin: '1rem 0'}}>
-                    <button style={{fontWeight:'bold', borderRadius:'10px', padding:'5px'}} onClick={() => setOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}>
-                        Sort by Title: {order === 'asc' ? 'A–Z' : 'Z–A'}
-                    </button>
-                </div>
+            <div style={{textAlign: 'right',margin: '1rem 0'}}>
+                <button style={{fontWeight:'bold', borderRadius:'10px', padding:'5px'}} onClick={() => setOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}>
+                    Sort by Title: {order === 'asc' ? 'A–Z' : 'Z–A'}
+                </button>
             </div>
             
 
@@ -98,6 +87,21 @@ function BookBrowser() {
                 <button onClick={() => setPage(p => p + 1)}>
                     Next
                 </button>
+            </div>
+
+            <div style={{marginTop:"100px"}}>
+                <div>
+                    <h1>UPLOAD YOU OWN BOOKS</h1>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1rem 0' }}>
+                        <input
+                            type="file"
+                            onChange={e => setFile(e.target.files[0])}
+                            style={{ marginRight: '1rem', marginTop:'0px'}}
+                        />
+                        <button onClick={handleUpload} style={{padding:'10px', borderRadius:'10px', fontWeight:'bold'}}>UPLOAD BOOK</button>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     );
