@@ -19,7 +19,7 @@ const UserTable = () => {
   const handleDeleteUser = (id) => {
     dispatch(deleteUser(id));
   };
-
+  
   return (
     <div className="container">
       <h2>USER MANAGEMENT</h2>
